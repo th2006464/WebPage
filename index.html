@@ -1,132 +1,212 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>唐氏國際控股 | Tang International Holdings</title>
     <style>
-      body {
-        background-color: #f5f5f5;
-        margin: 0;
-        font-family: "Helvetica Neue", Helvetica, Arial, "Noto Sans TC", sans-serif;
-        color: #222;
-      }
+        :root {
+            --bg: #050a14;
+            --card: #0d1425;
+            --accent: #00d2ff;
+            --gold: #c5a059;
+            --text-main: #f0f4f8;
+            --text-dim: #8892b0;
+        }
 
-      .container {
-        max-width: 900px;
-        margin: 80px auto;
-        text-align: center;
-        padding: 0 40px;
-      }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: "Inter", "PingFang HK", "Segoe UI", sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow: hidden;
+        }
 
-      h1 {
-        font-size: 42px;
-        font-weight: 400;
-        line-height: 1.4;
-        margin-bottom: 5px;
-      }
+        /* 背景微光装饰 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: -10%; right: -5%;
+            width: 50%; height: 60%;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.03) 0%, transparent 70%);
+            z-index: 0;
+        }
 
-      h1 span {
-        display: block;
-        font-size: 30px;
-        font-weight: 300;
-        color: #444;
-        margin-top: 5px;
-      }
+        .main-wrapper {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            padding: 0 8%;
+            gap: 80px;
+            position: relative;
+            z-index: 1;
+        }
 
-      h2 {
-        font-size: 22px;
-        font-weight: 300;
-        color: #555;
-        margin: 25px 0 50px 0;
-      }
+        /* 左侧：品牌核心 */
+        .brand-section {
+            flex: 1.2;
+        }
 
-      p {
-        text-align: left;
-        line-height: 1.9;
-        font-size: 16px;
-        margin: 20px 0;
-      }
+        .logo-area {
+            border-left: 4px solid var(--gold);
+            padding-left: 25px;
+            margin-bottom: 45px;
+        }
 
-      strong {
-        color: #111;
-      }
+        h1 {
+            font-size: 42px;
+            margin: 0;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
 
-      .highlight {
-        color: #0070f3;
-        font-weight: 600;
-      }
+        h1 span {
+            display: block;
+            font-size: 18px;
+            font-weight: 300;
+            color: var(--gold);
+            margin-top: 8px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
 
-      p em {
-        display: block;
-        text-align: center;
-        margin-top: 40px;
-        font-style: normal;
-        color: #666;
-        letter-spacing: 1px;
-      }
+        .hero-desc {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-dim);
+            max-width: 520px;
+            margin: 30px 0;
+        }
 
-      hr {
-        margin: 60px auto;
-        width: 60%;
-        border: 0;
-        border-top: 1px solid #ccc;
-      }
+        .hero-desc em {
+            display: block;
+            margin-top: 15px;
+            font-style: normal;
+            font-size: 14px;
+            opacity: 0.8;
+        }
 
-      #suggestions {
-        margin-top: 40px;
-        text-align: center;
-        font-size: 15px;
-        color: #555;
-      }
+        .slogan {
+            font-size: 18px;
+            font-weight: 300;
+            color: var(--accent);
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: inline-block;
+            padding-top: 15px;
+        }
 
-      #suggestions a {
-        color: #0070f3;
-        font-weight: 500;
-        text-decoration: none;
-      }
+        /* 右侧：业务模块 */
+        .feature-grid {
+            flex: 1;
+            display: grid;
+            gap: 20px;
+        }
 
-      #suggestions a:hover {
-        text-decoration: underline;
-      }
+        .info-card {
+            background: var(--card);
+            padding: 24px 30px;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .info-card:hover {
+            border-color: var(--accent);
+            transform: translateX(12px);
+            background: #121d33;
+        }
+
+        .info-card h3 {
+            margin: 0 0 12px 0;
+            font-size: 18px;
+            color: var(--accent);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card h3 span {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        .info-card p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* 底部 */
+        .footer-mini {
+            position: absolute;
+            bottom: 40px;
+            left: 8%;
+            font-size: 12px;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-mini a {
+            color: #718096;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-mini a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 1100px) {
+            body { overflow: auto; }
+            .main-wrapper { flex-direction: column; padding: 80px 40px; height: auto; gap: 50px; }
+            .footer-mini { position: static; margin-top: 60px; padding-bottom: 40px; }
+            body::before { display: none; }
+        }
     </style>
-  </head>
+</head>
+<body>
 
-  <body>
-    <div class="container">
-      <h1>
-        唐氏國際控股
-        <span>Tang International Holdings</span>
-      </h1>
-      <h2>立足全球．共創永續未來</h2>
+    <div class="main-wrapper">
+        <section class="brand-section">
+            <div class="logo-area">
+                <h1>唐氏國際控股<span>Tang International Holdings</span></h1>
+            </div>
+            <div class="hero-desc">
+                唐氏國際控股是一家以長期價值為導向的全球投資與戰略諮詢機構，專注於通過創新思維與嚴謹分析，為全球客戶創造可持續的增長與影響力。
+                <em>Driven by long-term value creation, Tang International Holdings is a global investment and strategic advisory firm empowering clients through innovation and rigorous analysis.</em>
+            </div>
+            <div class="slogan">Global Vision. Sustainable Future.</div>
+        </section>
 
-      <p><strong>唐氏國際控股（Tang International Holdings）</strong> 是一家以長期價值為導向的全球投資與戰略諮詢機構，專注於通過創新思維與嚴謹分析，為客戶及合作夥伴創造可持續的增長與影響力。</p>
-
-      <p><strong class="highlight">人工智慧（AI）與量子計算（Quantum Computing）</strong> 是推動我們前行的雙引擎。我們深信科技創新將重塑全球資本格局，憑藉在AI與量子演算領域的前瞻研究與實踐能力，唐氏國際正引領智慧投資與風險控制的未來方向。</p>
-
-      <p>我們的跨學科團隊結合金融工程、數據科學與產業洞察，為政府、企業及高淨值客戶提供涵蓋資產配置、風險管理、產業研究與策略投資的全方位服務，助力在不確定的市場環境中保持競爭優勢。</p>
-
-      <p>唐氏國際秉承「誠信為本、創新為核、責任為先」的理念，在全球資本市場中持續拓展新機遇。我們將企業社會責任視為長遠發展的重要基石，致力於在經濟效益與社會價值之間取得平衡，推動經濟繁榮與社會進步的和諧共生。</p>
-
-      <p><em>以全球視野，構建永續未來。</em></p>
-
-      <hr>
-
-      <p><strong>Tang International Holdings</strong> is a global investment and strategic advisory institution driven by long-term value creation. Through innovation and rigorous analysis, we empower clients and partners to achieve sustainable growth and lasting impact.</p>
-
-      <p><strong class="highlight">Artificial Intelligence (AI)</strong> and <strong class="highlight">Quantum Computing</strong> form the twin pillars of our innovation strategy. We believe that technological breakthroughs redefine how capital, insight, and opportunity converge — enabling smarter investments, deeper analysis, and more resilient portfolios.</p>
-
-      <p>With expertise across finance, data science, and strategic industries, our multidisciplinary teams deliver comprehensive solutions in asset allocation, risk management, market intelligence, and strategic investment for governments, corporations, and high-net-worth clients.</p>
-
-      <p>Guided by integrity, innovation, and responsibility, Tang International Holdings integrates corporate social responsibility into its core strategy — advancing economic prosperity and social progress in harmony.</p>
-
-      <p><em>Global vision. Sustainable future.</em></p>
-
-      <div id="suggestions">
-        <a href="https://foxtang.com">Tang Group</a> &mdash;
-        聯絡信箱：
-        <a href="mailto:CSC@foxtang.com">CSC@foxtang.com</a>
-      </div>
+        <section class="feature-grid">
+            <div class="info-card">
+                <h3>智慧引擎 <span>Intelligence Engine</span></h3>
+                <p>利用 AI 与量子计算重塑资本格局，引领智慧投资方向。<br>Redefining capital markets through AI and Quantum Computing.</p>
+            </div>
+            <div class="info-card">
+                <h3>專業服務 <span>Professional Services</span></h3>
+                <p>結合金融工程與數據科學，提供全方位資產配置方案。<br>Comprehensive asset allocation via financial engineering and data science.</p>
+            </div>
+            <div class="info-card">
+                <h3>核心理念 <span>Core Philosophy</span></h3>
+                <p>誠信為本、創新為核，推動經濟與社會的和諧共生。<br>Prioritizing integrity and innovation for sustainable global progress.</p>
+            </div>
+        </section>
     </div>
-  </body>
+
+    <div class="footer-mini">
+        <span>© 2026 Tang International Holdings.</span>
+        <a href="https://foxtang.com">Tang Group</a>
+        <a href="mailto:info@foxtang.com">Contact Us / 聯絡我們</a>
+    </div>
+
+</body>
 </html>
