@@ -15,159 +15,75 @@
         }
 
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
+            margin: 0; padding: 0; height: 100%;
             font-family: "Inter", "PingFang HK", "Segoe UI", sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
+            background-color: var(--bg); color: var(--text-main);
             overflow: hidden;
         }
 
-        /* 背景微光装饰 */
+        /* 背景微光 */
         body::before {
-            content: "";
-            position: absolute;
-            top: -10%; right: -5%;
+            content: ""; position: absolute; top: -10%; right: -5%;
             width: 50%; height: 60%;
-            background: radial-gradient(circle, rgba(0, 210, 255, 0.03) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.04) 0%, transparent 70%);
             z-index: 0;
         }
 
+        /* 动画 */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
         .main-wrapper {
-            display: flex;
-            height: 100vh;
-            align-items: center;
-            padding: 0 8%;
-            gap: 80px;
-            position: relative;
-            z-index: 1;
+            display: flex; height: 100vh; align-items: center;
+            padding: 0 8%; gap: 80px; position: relative; z-index: 1;
+            animation: fadeInUp 1s ease-out;
         }
 
-        /* 左侧：品牌核心 */
-        .brand-section {
-            flex: 1.2;
-        }
+        .brand-section { flex: 1.2; }
+        .logo-area { border-left: 4px solid var(--gold); padding-left: 25px; margin-bottom: 45px; }
+        
+        h1 { font-size: 42px; margin: 0; letter-spacing: 2px; line-height: 1.1; }
+        h1 span { display: block; font-size: 18px; font-weight: 300; color: var(--gold); margin-top: 8px; letter-spacing: 3px; text-transform: uppercase; }
 
-        .logo-area {
-            border-left: 4px solid var(--gold);
-            padding-left: 25px;
-            margin-bottom: 45px;
-        }
+        .hero-desc { font-size: 16px; line-height: 1.8; color: var(--text-dim); max-width: 520px; margin: 30px 0; }
+        .hero-desc em { display: block; margin-top: 15px; font-style: normal; font-size: 14px; opacity: 0.8; }
 
-        h1 {
-            font-size: 42px;
-            margin: 0;
-            letter-spacing: 2px;
-            line-height: 1.1;
-        }
+        .slogan-box { display: flex; align-items: center; gap: 15px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; }
+        .slogan { font-size: 18px; font-weight: 300; color: var(--accent); }
+        .emoji-float { font-size: 28px; animation: float 4s ease-in-out infinite; }
 
-        h1 span {
-            display: block;
-            font-size: 18px;
-            font-weight: 300;
-            color: var(--gold);
-            margin-top: 8px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .hero-desc {
-            font-size: 16px;
-            line-height: 1.8;
-            color: var(--text-dim);
-            max-width: 520px;
-            margin: 30px 0;
-        }
-
-        .hero-desc em {
-            display: block;
-            margin-top: 15px;
-            font-style: normal;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        .slogan {
-            font-size: 18px;
-            font-weight: 300;
-            color: var(--accent);
-            letter-spacing: 1px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: inline-block;
-            padding-top: 15px;
-        }
-
-        /* 右侧：业务模块 */
-        .feature-grid {
-            flex: 1;
-            display: grid;
-            gap: 20px;
-        }
-
+        .feature-grid { flex: 1; display: grid; gap: 20px; }
         .info-card {
-            background: var(--card);
-            padding: 24px 30px;
-            border-radius: 4px;
+            background: var(--card); padding: 24px 30px; border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.03);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.4s ease; display: flex; gap: 20px;
         }
+        .info-card:hover { border-color: var(--accent); transform: translateX(12px); background: #121d33; }
+        
+        .card-icon { font-size: 30px; min-width: 45px; display: flex; align-items: center; }
+        .card-content h3 { margin: 0 0 12px 0; font-size: 18px; color: var(--accent); display: flex; flex-direction: column; }
+        .card-content h3 span { font-size: 12px; text-transform: uppercase; opacity: 0.7; margin-top: 2px; }
+        .card-content p { margin: 0; font-size: 13px; color: var(--text-dim); line-height: 1.6; }
 
-        .info-card:hover {
-            border-color: var(--accent);
-            transform: translateX(12px);
-            background: #121d33;
-        }
-
-        .info-card h3 {
-            margin: 0 0 12px 0;
-            font-size: 18px;
-            color: var(--accent);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .info-card h3 span {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.7;
-            margin-top: 2px;
-        }
-
-        .info-card p {
-            margin: 0;
-            font-size: 13px;
-            color: var(--text-dim);
-            line-height: 1.6;
-        }
-
-        /* 底部 */
         .footer-mini {
-            position: absolute;
-            bottom: 40px;
-            left: 8%;
-            font-size: 12px;
-            color: #4a5568;
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            position: absolute; bottom: 40px; left: 8%;
+            font-size: 12px; color: #4a5568; display: flex; align-items: center; gap: 25px;
         }
-
-        .footer-mini a {
-            color: #718096;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-mini a:hover {
-            color: var(--accent);
-        }
+        .footer-mini a { color: #718096; text-decoration: none; }
+        .footer-mini a:hover { color: var(--accent); }
+        .email-display { color: #718096; font-weight: 500; }
 
         @media (max-width: 1100px) {
             body { overflow: auto; }
-            .main-wrapper { flex-direction: column; padding: 80px 40px; height: auto; gap: 50px; }
-            .footer-mini { position: static; margin-top: 60px; padding-bottom: 40px; }
+            .main-wrapper { flex-direction: column; padding: 80px 40px; height: auto; align-items: flex-start; }
+            .footer-mini { position: static; margin-top: 60px; padding-bottom: 40px; flex-wrap: wrap; }
             body::before { display: none; }
         }
     </style>
@@ -183,30 +99,51 @@
                 唐氏國際控股是一家以長期價值為導向的全球投資與戰略諮詢機構，專注於通過創新思維與嚴謹分析，為全球客戶創造可持續的增長與影響力。
                 <em>Driven by long-term value creation, Tang International Holdings is a global investment and strategic advisory firm empowering clients through innovation and rigorous analysis.</em>
             </div>
-            <div class="slogan">Global Vision. Sustainable Future.</div>
+            <div class="slogan-box">
+                <span class="emoji-float">🌍</span>
+                <div class="slogan">Global Vision. Sustainable Future.</div>
+            </div>
         </section>
 
         <section class="feature-grid">
             <div class="info-card">
-                <h3>智慧引擎 <span>Intelligence Engine</span></h3>
-                <p>利用 AI 与量子计算重塑资本格局，引领智慧投资方向。<br>Redefining capital markets through AI and Quantum Computing.</p>
+                <div class="card-icon">🚀</div>
+                <div class="card-content">
+                    <h3>智慧引擎 <span>Intelligence Engine</span></h3>
+                    <p>利用 AI 與量子計算重塑資本格局，引領智慧投資方向。<br>Redefining capital markets through AI and Quantum Computing.</p>
+                </div>
             </div>
             <div class="info-card">
-                <h3>專業服務 <span>Professional Services</span></h3>
-                <p>結合金融工程與數據科學，提供全方位資產配置方案。<br>Comprehensive asset allocation via financial engineering and data science.</p>
+                <div class="card-icon">💎</div>
+                <div class="card-content">
+                    <h3>專業服務 <span>Professional Services</span></h3>
+                    <p>結合金融工程與數據科學，提供全方位資產配置方案。<br>Comprehensive asset allocation via financial engineering and data science.</p>
+                </div>
             </div>
             <div class="info-card">
-                <h3>核心理念 <span>Core Philosophy</span></h3>
-                <p>誠信為本、創新為核，推動經濟與社會的和諧共生。<br>Prioritizing integrity and innovation for sustainable global progress.</p>
+                <div class="card-icon">🤝</div>
+                <div class="card-content">
+                    <h3>核心理念 <span>Core Philosophy</span></h3>
+                    <p>誠信為本、創新為核，在經濟效益與社會價值間取得平衡。<br>Prioritizing integrity and innovation for sustainable global progress.</p>
+                </div>
             </div>
         </section>
     </div>
 
     <div class="footer-mini">
         <span>© 2026 Tang International Holdings.</span>
-        <a href="https://foxtang.com">Tang Group</a>
-        <a href="mailto:info@foxtang.com">Contact Us / 聯絡我們</a>
+        <a href="https://foxtang.com">🔗 Tang Group</a>
+        <span id="contact-area"></span>
     </div>
 
+    <script>
+        // 动态生成邮箱地址，避免爬虫抓取同时也绕过 CF 的自动混淆拦截
+        (function() {
+            var user = "csc";
+            var domain = "foxtang.com";
+            var element = document.getElementById('contact-area');
+            element.innerHTML = '<span class="email-display">✉️ 聯絡我們：' + user + '@' + domain + '</span>';
+        })();
+    </script>
 </body>
 </html>
