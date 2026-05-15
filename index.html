@@ -1,146 +1,178 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOXTANG & CIE | 伏騰吉斯控股</title>
+    <title>FOXTANG & CIE | Global Sovereign Holdings</title>
     <style>
         :root {
-            --bg: #050a14;
-            --card: #0d1425;
-            --accent: #00d2ff;
-            --gold: #c5a059;
-            --text-main: #f0f4f8;
-            --text-dim: #8892b0;
+            --bg: #03070c;
+            --card: #080e1a;
+            --gold: #b3935a;
+            --text-main: #e2e8f0;
+            --text-dim: #64748b;
         }
 
         body, html {
-            margin: 0; padding: 0; height: 100%;
-            font-family: "Inter", "PingFang HK", "Segoe UI", sans-serif;
+            margin: 0; padding: 0; height: 100vh;
+            font-family: "Inter", "Playfair Display", "PingFang HK", serif;
             background-color: var(--bg); color: var(--text-main);
             overflow: hidden;
         }
 
-        /* 背景微光：模拟低调的奢华感 */
+        /* 顶级机构环境光 */
         body::before {
             content: ""; position: absolute; top: -10%; right: -5%;
-            width: 50%; height: 60%;
-            background: radial-gradient(circle, rgba(197, 160, 89, 0.05) 0%, transparent 70%);
+            width: 40%; height: 50%;
+            background: radial-gradient(circle, rgba(179, 147, 90, 0.05) 0%, transparent 70%);
             z-index: 0;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* 语言切换器：位于右上角且不遮挡标题 */
+        .nav-lang {
+            position: absolute; top: 40px; right: 8%;
+            display: flex; gap: 20px; z-index: 100;
+            font-size: 11px; letter-spacing: 2px;
         }
+        .nav-lang span { cursor: pointer; color: var(--text-dim); transition: 0.3s; padding-bottom: 2px; }
+        .nav-lang span.active { color: var(--gold); border-bottom: 1px solid var(--gold); }
+        .nav-lang span:hover { color: var(--text-main); }
 
         .main-wrapper {
-            display: flex; height: 100vh; align-items: center;
-            padding: 0 8%; gap: 80px; position: relative; z-index: 1;
-            animation: fadeInUp 1s ease-out;
+            display: flex; height: 100vh; flex-direction: column; justify-content: center;
+            padding: 0 10%; position: relative; z-index: 1;
+            animation: fadeIn 1.5s ease-out;
         }
 
-        .brand-section { flex: 1.2; }
-        .logo-area { border-left: 3px solid var(--gold); padding-left: 30px; margin-bottom: 45px; }
+        /* 品牌核心区 */
+        .brand-header { border-left: 3px solid var(--gold); padding-left: 35px; margin-bottom: 60px; }
+        h1 { font-size: 52px; margin: 0; letter-spacing: 6px; line-height: 1; font-weight: 700; text-transform: uppercase; }
+        .cn-title { font-size: 20px; display: block; font-weight: 300; color: var(--text-dim); margin-top: 12px; letter-spacing: 5px; }
         
-        h1 { font-size: 48px; margin: 0; letter-spacing: 4px; line-height: 1; font-weight: 700; }
-        h1 span { display: block; font-size: 16px; font-weight: 400; color: var(--gold); margin-top: 12px; letter-spacing: 5px; text-transform: uppercase; }
+        .hero-desc { font-size: 15px; line-height: 2; color: var(--text-dim); max-width: 650px; margin-top: 35px; font-weight: 300; }
 
-        .hero-desc { font-size: 16px; line-height: 1.8; color: var(--text-dim); max-width: 550px; margin: 35px 0; font-weight: 300; }
-        .hero-desc em { display: block; margin-top: 15px; font-style: normal; font-size: 14px; opacity: 0.6; letter-spacing: 0.5px; }
-
-        .slogan-box { display: flex; align-items: center; gap: 20px; border-top: 1px solid rgba(197, 160, 89, 0.2); padding-top: 30px; }
-        .slogan { font-size: 14px; font-weight: 400; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; }
-
-        .feature-grid { flex: 1; display: grid; gap: 20px; }
-        .info-card {
-            background: var(--card); padding: 28px 35px; border-radius: 4px;
-            border: 1px solid rgba(255,255,255,0.03);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); display: flex; gap: 25px;
+        /* 资产板块网格 */
+        .feature-grid { 
+            display: grid; grid-template-columns: repeat(3, 1fr); 
+            gap: 50px; margin-top: 40px; 
         }
-        .info-card:hover { border-color: var(--gold); transform: translateY(-5px); background: #111a2e; }
-        
-        .card-icon { font-size: 28px; min-width: 40px; display: flex; align-items: center; opacity: 0.8; }
-        .card-content h3 { margin: 0 0 12px 0; font-size: 18px; color: var(--text-main); display: flex; flex-direction: column; letter-spacing: 1px; }
-        .card-content h3 span { font-size: 11px; text-transform: uppercase; color: var(--gold); opacity: 0.8; margin-top: 4px; letter-spacing: 2px; }
-        .card-content p { margin: 0; font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+        .info-card { border-top: 1px solid rgba(179, 147, 90, 0.2); padding-top: 30px; }
+        .info-card h3 { font-size: 15px; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin: 0 0 15px 0; }
+        .info-card p { font-size: 13px; color: var(--text-dim); line-height: 1.8; margin: 0; font-weight: 300; }
 
-        .footer-mini {
-            position: absolute; bottom: 40px; left: 8%;
-            font-size: 11px; color: #4a5568; display: flex; align-items: center; gap: 30px; letter-spacing: 1px;
+        /* 底部信息栏 */
+        .footer {
+            position: absolute; bottom: 40px; left: 10%; right: 10%;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 10px; color: #475569; letter-spacing: 2px; text-transform: uppercase;
         }
-        .footer-mini a { color: #718096; text-decoration: none; transition: color 0.3s; }
-        .footer-mini a:hover { color: var(--gold); }
+        .footer-links { display: flex; gap: 40px; }
+        .footer a { color: inherit; text-decoration: none; transition: 0.3s; }
+        .footer a:hover { color: var(--gold); }
+        .email-display { color: var(--text-dim); font-weight: 400; }
 
-        @media (max-width: 1100px) {
-            body { overflow: auto; }
-            .main-wrapper { flex-direction: column; padding: 100px 40px; height: auto; }
-            .footer-mini { position: static; margin-top: 80px; padding-bottom: 40px; }
-            body::before { display: none; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 1200px) {
+            body { overflow-y: auto; height: auto; }
+            .main-wrapper { padding: 120px 40px; height: auto; }
+            .feature-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer { position: static; margin-top: 80px; flex-direction: column; gap: 20px; padding-bottom: 40px; }
         }
     </style>
 </head>
 <body>
 
+    <nav class="nav-lang" id="lang-nav">
+        <span class="active" data-lang="en">EN</span>
+        <span data-lang="fr">FR</span>
+        <span data-lang="zh">ZH</span>
+    </nav>
+
     <div class="main-wrapper">
-        <section class="brand-section">
-            <div class="logo-area">
-                <h1>FOXTANG & CIE<span>International Strategic Holdings</span></h1>
+        <header class="brand-header">
+            <h1 id="main-title">FOXTANG & CIE</h1>
+            <span class="cn-title">伏騰吉斯控股</span>
+            
+            <div class="hero-desc" id="hero-text">
+                FOXTANG & CIE is a multi-jurisdictional institution presiding over a global portfolio of strategic equities and systemic assets. We converge high-density quantum intelligence with institutional capital governance to anchor absolute value.
             </div>
-            <div class="hero-desc">
-                作為一家跨國機構，FOXTANG & CIE 通過管理覆蓋全球的多元化股權與戰略資產，在數智時代的底層架構中錨定價值。我們融合量子計算的極限算力與跨週期的資本治理，確保在全球金融範式演進中保持絕對的領先地位。
-                <em>An institutional architect of global equities and strategic assets. FOXTANG & CIE integrates quantum-kinetic frameworks with cross-border governance to secure absolute dominance within the evolving global financial architecture.</em>
-            </div>
-            <div class="slogan-box">
-                <div class="slogan">Discrete. Systemic. Global.</div>
-            </div>
-        </section>
+        </header>
 
-        <section class="feature-grid">
-            <!-- 模块一：量子与AI -->
+        <section class="feature-grid" id="feature-grid">
             <div class="info-card">
-                <div class="card-icon">🗝️</div>
-                <div class="card-content">
-                    <h3>前沿原核 <span>Frontier Kernel</span></h3>
-                    <p>部署人工智能與量子計算底層協議，定義下一代資本市場的算法主權。<br>
-                    Deploying AI and quantum protocols to define algorithmic sovereignty for the next century.</p>
-                </div>
+                <h3 id="card-t1">Frontier Kernels</h3>
+                <p id="card-p1">Deploying sovereign protocols in AI and Quantum computing to secure algorithmic dominance in the next-generation financial architecture.</p>
             </div>
 
-            <!-- 模块二：国际控股体量 -->
             <div class="info-card">
-                <div class="card-icon">🏛️</div>
-                <div class="card-content">
-                    <h3>跨國治理 <span>Intercontinental Governance</span></h3>
-                    <p>管理全球範疇內的多元化控股資產，通過精準的資本架構實現跨週期增長。<br>
-                    Managing global diversified holdings through rigorous capital architecture and institutional rigor.</p>
-                </div>
+                <h3 id="card-t2">Global Governance</h3>
+                <p id="card-p2">Managing controlling interests in pivotal international enterprises through discrete capital structuring and rigorous institutional mandates.</p>
             </div>
 
-            <!-- 模块三：老钱的长期主义 -->
             <div class="info-card">
-                <div class="card-icon">♟️</div>
-                <div class="card-content">
-                    <h3>範式演進 <span>Paradigm Evolution</span></h3>
-                    <p>超越傳統投資邊界，以技術賦能人類文明進步，構建永續的長期價值坐標。<br>
-                    Transcending boundaries to empower human progress through systemic value creation.</p>
-                </div>
+                <h3 id="card-t3">Paradigm Permanence</h3>
+                <p id="card-p3">Transcending traditional investment horizons to empower civilizational progress through long-term technological alignment and capital stability.</p>
             </div>
         </section>
     </div>
 
-    <div class="footer-mini">
-        <span>© 2026 FOXTANG International Holdings.</span>
-        <a href="https://foxtang.com">🔗 Institutional Access</a>
-        <span id="contact-area"></span>
+    <div class="footer">
+        <div class="footer-links">
+            <span>© 2026 FOXTANG International Holdings</span>
+            <a href="https://foxtang.com">Institutional Portal</a>
+        </div>
+        <div id="contact-area" class="email-display"></div>
     </div>
 
     <script>
+        // 语言包配置
+        const translations = {
+            en: {
+                hero: "FOXTANG & CIE is a multi-jurisdictional institution presiding over a global portfolio of strategic equities and systemic assets. We converge high-density quantum intelligence with institutional capital governance to anchor absolute value.",
+                t1: "Frontier Kernels", p1: "Deploying sovereign protocols in AI and Quantum computing to secure algorithmic dominance in the next-generation financial architecture.",
+                t2: "Global Governance", p2: "Managing controlling interests in pivotal international enterprises through discrete capital structuring and rigorous institutional mandates.",
+                t3: "Paradigm Permanence", p3: "Transcending traditional investment horizons to empower civilizational progress through long-term technological alignment and capital stability."
+            },
+            fr: {
+                hero: "FOXTANG & CIE est une institution multi-juridictionnelle présidant un portefeuille mondial d'actions stratégiques. Nous convergeons l'intelligence quantique avec la gouvernance institutionnelle.",
+                t1: "Noyaux Frontières", p1: "Déployer des protocoles souverains en IA et calcul quantique pour assurer la dominance algorithmique dans l'architecture financière.",
+                t2: "Gouvernance Globale", p2: "Gérer des participations majoritaires dans des entreprises internationales pivots via une structuration discrète du capital.",
+                t3: "Permanence du Paradigme", p3: "Transcender les horizons d'investissement traditionnels pour favoriser le progrès de la civilisation."
+            },
+            zh: {
+                hero: "身為跨國主權級投資機構，FOXTANG & CIE 管理全球多元股權與系統性資產。我們融合高密度量子智能與機構化資本治理，在技術奇點時代錨定絕對價值。",
+                t1: "前沿原核", p1: "部署人工智能與量子計算的主權協議，確保在下一代金融架構中的算法霸權。",
+                t2: "全球股權治理", p2: "通過隱秘的資本架構与嚴謹的機構授權，管理關鍵國際企業的控股權益。",
+                t3: "範式永續", p3: "超越傳統投資視野，通過長期技術對齊与資本永續，賦能文明進步。"
+            }
+        };
+
+        // 语言切换逻辑
+        document.getElementById('lang-nav').addEventListener('click', function(e) {
+            if (e.target.tagName === 'SPAN') {
+                const lang = e.target.getAttribute('data-lang');
+                
+                // 更新样式
+                document.querySelectorAll('.nav-lang span').forEach(s => s.classList.remove('active'));
+                e.target.classList.add('active');
+
+                // 更新内容
+                document.getElementById('hero-text').innerText = translations[lang].hero;
+                document.getElementById('card-t1').innerText = translations[lang].t1;
+                document.getElementById('card-p1').innerText = translations[lang].p1;
+                document.getElementById('card-t2').innerText = translations[lang].t2;
+                document.getElementById('card-p2').innerText = translations[lang].p2;
+                document.getElementById('card-t3').innerText = translations[lang].t3;
+                document.getElementById('card-p3').innerText = translations[lang].p3;
+            }
+        });
+
+        // 联系信息动态生成 (防爬虫)[cite: 1]
         (function() {
             var user = "csc";
             var domain = "foxtang.com";
-            var element = document.getElementById('contact-area');
-            element.innerHTML = '<span style="color: #718096;">✉️ Contact: ' + user + '@' + domain + '</span>';
+            document.getElementById('contact-area').innerHTML = '✉ Contact: ' + user + '@' + domain;
         })();
     </script>
 </body>
