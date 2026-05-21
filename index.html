@@ -73,12 +73,53 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 移动端响应式优化 */
+        /* 移动端响应式完美优化（仅保留上下滚动，彻底消除左右滚动） */
         @media (max-width: 1200px) {
-            html, body { overflow: auto; height: auto; }
-            .main-wrapper { padding: 120px 40px; height: auto; }
-            .feature-grid { grid-template-columns: 1fr; gap: 40px; }
-            .footer { position: static; margin-top: 80px; flex-direction: column; gap: 20px; padding-bottom: 40px; }
+            html, body { 
+                overflow-x: hidden; /* 核心防御：切断横向溢出 */
+                overflow-y: auto;   /* 完美保留垂直滚动 */
+                height: auto; 
+            }
+            .nav-lang {
+                position: relative; /* 手机端取消绝对定位，防止飘到屏幕外 */
+                top: 0; right: 0;
+                justify-content: flex-end; 
+                padding: 30px 30px 0 0;
+                margin-bottom: -50px; /* 吸收空间 */
+            }
+            .main-wrapper { 
+                padding: 100px 30px; /* 适当缩减内边距，给文字留足空间 */
+                height: auto; 
+            }
+            .brand-header {
+                padding-left: 20px; /* 缩小金线左侧边距 */
+                margin-bottom: 40px;
+            }
+            h1 { 
+                font-size: 32px; /* 缩小主标题字号，防止英文单词在一行内撑爆屏幕 */
+                letter-spacing: 3px; 
+                word-wrap: break-word;
+            }
+            .cn-title {
+                font-size: 16px;
+                letter-spacing: 3px;
+            }
+            .feature-grid { 
+                grid-template-columns: 1fr; /* 变更为单列瀑布流 */
+                gap: 40px; 
+            }
+            .footer { 
+                position: static; 
+                margin-top: 60px; 
+                flex-direction: column; 
+                gap: 15px; 
+                padding-bottom: 40px; 
+                align-items: flex-start; /* 移动端靠左对齐更美观 */
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -145,7 +186,7 @@
                 hero: "身為跨國主權級投資機構，FOXTANG & CIE 管理全球多元股權與系統性資產。我們融合高密度量子智能與機構化資本治理，在技術奇點時代錨定絕對價值。",
                 t1: "前沿原核", p1: "部署人工智能與量子計算的主權協議，確保在下一代金融架構中的算法霸權。",
                 t2: "全球股權治理", p2: "通過隱秘的資本架構与嚴謹的機構授權，管理關鍵國際企業的控股權益。",
-                t3: "範式永续", p3: "超越傳統投資視野，通過長期技術對齊与資本永續，賦能文明進步。"
+                t3: "範式永續", p3: "超越傳統投資視野，通過長期技術對齊与資本永續，賦能文明進步。"
             }
         };
 
