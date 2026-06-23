@@ -54,10 +54,10 @@ export default function PortfolioPage() {
           <div className="mb-12 md:mb-16">
             <div className="w-8 h-px bg-brand/60 mb-5" />
             <h2 className="text-[11px] font-semibold tracking-[0.24em] uppercase text-brand mb-3">
-              Investment Philosophy
+              {t('sectionPhilosophy')}
             </h2>
             <p className="text-slate-400 text-sm max-w-lg">
-              Three pillars that define every allocation decision.
+              {t('sectionPhilosophyDesc')}
             </p>
           </div>
         </ScrollReveal>
@@ -65,11 +65,11 @@ export default function PortfolioPage() {
         {/* Three-pillar layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
-            { icon: <TrendingUp size={24} />, title: 'Endurance', desc: 'We seek assets that compound through cycles, not headlines. Durability matters more than velocity.' },
-            { icon: <Globe size={24} />, title: 'Diversification', desc: 'Across continents, jurisdictions, and asset classes — insulation from any single point of failure.' },
-            { icon: <ShieldCheck size={24} />, title: 'Privacy', desc: 'Structures designed to protect ownership, preserve control, and keep our principals\' interests confidential.' },
+            { icon: <TrendingUp size={24} />, titleKey: 'pillarEndurance', descKey: 'pillarEnduranceDesc' },
+            { icon: <Globe size={24} />, titleKey: 'pillarDiversification', descKey: 'pillarDiversificationDesc' },
+            { icon: <ShieldCheck size={24} />, titleKey: 'pillarPrivacy', descKey: 'pillarPrivacyDesc' },
           ].map((pillar, i) => (
-            <ScrollReveal key={pillar.title} delay={i * 0.15}>
+            <ScrollReveal key={pillar.titleKey} delay={i * 0.15}>
               <div className="group relative bg-white/[0.02] border border-white/[0.05] rounded-2xl p-8 md:p-10 hover:border-brand/15 transition-all duration-500 overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand/[0.03] rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
                 <div className="relative flex flex-col items-center text-center">
@@ -77,10 +77,10 @@ export default function PortfolioPage() {
                     {pillar.icon}
                   </div>
                   <h3 className="text-[15px] font-medium tracking-[0.20em] uppercase text-white mb-3">
-                    {pillar.title}
+                    {t(pillar.titleKey)}
                   </h3>
                   <p className="text-sm leading-relaxed text-slate-400">
-                    {pillar.desc}
+                    {t(pillar.descKey)}
                   </p>
                 </div>
               </div>
@@ -95,10 +95,10 @@ export default function PortfolioPage() {
           <div className="mb-12 md:mb-16">
             <div className="w-8 h-px bg-brand/60 mb-5" />
             <h2 className="text-[11px] font-semibold tracking-[0.24em] uppercase text-brand mb-3">
-              Asset Classes
+              {t('sectionClasses')}
             </h2>
             <p className="text-slate-400 text-sm max-w-lg">
-              A disciplined allocation across enduring categories.
+              {t('sectionClassesDesc')}
             </p>
           </div>
         </ScrollReveal>
@@ -127,10 +127,10 @@ export default function PortfolioPage() {
           <div className="mb-12 md:mb-16">
             <div className="w-8 h-px bg-brand/60 mb-5" />
             <h2 className="text-[11px] font-semibold tracking-[0.24em] uppercase text-brand mb-3">
-              Domains
+              {t('sectionDomains')}
             </h2>
             <p className="text-slate-400 text-sm max-w-lg">
-              Where we deploy our capital — selectively, deliberately, quietly.
+              {t('sectionDomainsDesc')}
             </p>
           </div>
         </ScrollReveal>
@@ -155,21 +155,21 @@ export default function PortfolioPage() {
             <div className="flex items-center gap-3 mb-8">
               <TrendingUp size={18} className="text-brand/60" />
               <span className="text-[11px] font-semibold tracking-[0.24em] uppercase text-brand/70">
-                Allocation Philosophy
+                {t('sectionAllocation')}
               </span>
             </div>
 
             {/* Visual bars */}
             <div className="space-y-5">
               {[
-                { label: 'Core Equity', pct: '40%', width: 40, color: 'bg-brand/60' },
-                { label: 'Infrastructure', pct: '35%', width: 35, color: 'bg-brand/40' },
-                { label: 'Technology Platforms', pct: '25%', width: 25, color: 'bg-brand/25' },
+                { labelKey: 'allocEquity', pct: '40%', width: 40, color: 'bg-brand/60' },
+                { labelKey: 'allocInfra', pct: '35%', width: 35, color: 'bg-brand/40' },
+                { labelKey: 'allocTech', pct: '25%', width: 25, color: 'bg-brand/25' },
               ].map((item) => (
-                <div key={item.label} className="space-y-2">
+                <div key={item.labelKey} className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-slate-400 tracking-[0.15em] uppercase">
-                      {item.label}
+                      {t(item.labelKey)}
                     </span>
                     <span className="text-xs text-slate-500 font-mono">
                       {item.pct}

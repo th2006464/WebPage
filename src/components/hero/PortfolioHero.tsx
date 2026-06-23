@@ -113,16 +113,16 @@ export default function PortfolioHero() {
           {/* Key metrics strip */}
           <div className="flex flex-wrap gap-8 mt-10 pt-10 border-t border-white/[0.04]">
             {[
-              { value: '3', label: 'Continents' },
-              { value: '12+', label: 'Jurisdictions' },
-              { value: '∞', label: 'Tenor' },
+              { value: '3', labelKey: 'metricContinents' },
+              { value: '12+', labelKey: 'metricJurisdictions' },
+              { value: '∞', labelKey: 'metricTenor' },
             ].map((metric) => (
-              <div key={metric.label}>
+              <div key={metric.labelKey}>
                 <div className="text-2xl md:text-3xl font-light text-white tracking-tight">
                   {metric.value}
                 </div>
                 <div className="text-[11px] tracking-[0.20em] uppercase text-slate-500 mt-1">
-                  {metric.label}
+                  {t(metric.labelKey)}
                 </div>
               </div>
             ))}

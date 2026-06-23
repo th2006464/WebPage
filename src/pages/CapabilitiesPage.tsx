@@ -43,10 +43,10 @@ export default function CapabilitiesPage() {
           <div className="mb-12 md:mb-16">
             <div className="w-8 h-px bg-brand/60 mb-5" />
             <h2 className="text-[11px] font-semibold tracking-[0.24em] uppercase text-brand mb-3">
-              Core Competencies
+              {t('sectionCoreCompetencies')}
             </h2>
             <p className="text-slate-400 text-sm max-w-lg">
-              Disciplines we bring to every engagement — precise, private, purposeful.
+              {t('sectionCoreCompetenciesDesc')}
             </p>
           </div>
         </ScrollReveal>
@@ -108,29 +108,29 @@ export default function CapabilitiesPage() {
                 <div className="inline-flex items-center gap-2 mb-4">
                   <Lock size={14} className="text-brand/60" />
                   <span className="text-[10px] font-semibold tracking-[0.24em] uppercase text-brand/60">
-                    Our Approach
+                    {t('sectionApproach')}
                   </span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-light tracking-tight text-white mb-3">
-                  Discretion by Design
+                  {t('approachTitle')}
                 </h3>
                 <p className="text-sm text-slate-400 leading-relaxed max-w-xl">
-                  Every capability we deploy is wrapped in a framework of privacy. We structure engagements so that our principals' identities, intentions and interests remain protected — across every jurisdiction, at every stage.
+                  {t('approachDesc')}
                 </p>
               </div>
 
               <div className="flex-shrink-0 flex gap-6 lg:gap-10">
                 {[
-                  { num: '100%', label: 'Private' },
-                  { num: '24/7', label: 'Oversight' },
-                  { num: '0', label: 'Publicity' },
+                  { num: '100%', labelKey: 'statPrivate' },
+                  { num: '24/7', labelKey: 'statOversight' },
+                  { num: '0', labelKey: 'statPublicity' },
                 ].map((stat) => (
-                  <div key={stat.label} className="text-center">
+                  <div key={stat.labelKey} className="text-center">
                     <div className="text-2xl md:text-3xl font-light text-white tracking-tight">
                       {stat.num}
                     </div>
                     <div className="text-[10px] tracking-[0.20em] uppercase text-slate-500 mt-1.5">
-                      {stat.label}
+                      {t(stat.labelKey)}
                     </div>
                   </div>
                 ))}

@@ -48,7 +48,7 @@ export default function Header() {
                 FOXTANG
               </strong>
               <span className="text-[10px] tracking-[0.22em] uppercase text-slate-500">
-                Private Holdings
+                {t('brandTagline')}
               </span>
             </div>
           </Link>

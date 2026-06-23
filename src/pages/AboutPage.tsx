@@ -59,10 +59,10 @@ export default function AboutPage() {
           <div className="mb-12 md:mb-16">
             <div className="w-8 h-px bg-brand/60 mb-5" />
             <h2 className="text-[11px] font-semibold tracking-[0.24em] uppercase text-brand mb-3">
-              How We Work
+              {t('sectionHowWeWork')}
             </h2>
             <p className="text-slate-400 text-sm max-w-lg">
-              Quiet presence. Stewardship first. Every engagement measured by a single standard.
+              {t('sectionHowWeWorkDesc')}
             </p>
           </div>
         </ScrollReveal>
@@ -101,21 +101,21 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
-            { title: 'Discretion', desc: 'We move quietly. Our principals\' affairs remain private, their interests protected, their names absent from the record.', icon: <Gem size={22} /> },
-            { title: 'Patience', desc: 'We measure returns in decades. Our structures are built to outlast the conditions that created them.', icon: <Heart size={22} /> },
-            { title: 'Stewardship', desc: 'Guiding portfolio companies with the patience and perspective that only private, unconflicted capital can offer.', icon: <Target size={22} /> },
+            { titleKey: 'valueDiscretion', descKey: 'valueDiscretionDesc', icon: <Gem size={22} /> },
+            { titleKey: 'valuePatience', descKey: 'valuePatienceDesc', icon: <Heart size={22} /> },
+            { titleKey: 'valueStewardship', descKey: 'valueStewardshipDesc', icon: <Target size={22} /> },
           ].map((v, i) => (
-            <ScrollReveal key={v.title} delay={i * 0.15}>
+            <ScrollReveal key={v.titleKey} delay={i * 0.15}>
               <article className="group relative bg-white/[0.02] border border-white/[0.05] rounded-2xl p-8 md:p-10 hover:border-brand/15 transition-all duration-500 overflow-hidden">
                 <div className="absolute inset-0 bg-brand/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 <div className="relative mb-5 text-brand/50 group-hover:text-brand/70 transition-colors duration-500">
                   {v.icon}
                 </div>
                 <h3 className="relative text-[13px] font-medium tracking-[0.20em] uppercase text-white mb-3">
-                  {v.title}
+                  {t(v.titleKey)}
                 </h3>
                 <p className="relative text-sm leading-relaxed text-slate-400">
-                  {v.desc}
+                  {t(v.descKey)}
                 </p>
               </article>
             </ScrollReveal>

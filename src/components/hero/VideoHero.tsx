@@ -32,12 +32,12 @@ export default function VideoHero() {
       <div className="relative h-full flex flex-col items-center justify-center px-6">
         <div className="text-center max-w-4xl">
           <span className="text-xs font-semibold tracking-[0.24em] uppercase text-brand mb-6 block">
-            PRIVATE HOLDINGS
+            {t('heroTagline')}
           </span>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter leading-none text-white">
-            <span className="block text-slate-400">Quiet Capital.</span>
-            <span className="block text-white -mt-1">Generational Vision.</span>
+            <span className="block text-slate-400">{t('heroLine1')}</span>
+            <span className="block text-white -mt-1">{t('heroLine2')}</span>
           </h1>
 
           <p className="text-base md:text-lg text-slate-400 mt-8 max-w-2xl mx-auto leading-relaxed">
