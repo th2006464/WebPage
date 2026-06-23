@@ -203,21 +203,8 @@ const ShapeGrid = ({
         }
       }
 
-      // Subtle edge fade — keeps grid visible edge-to-edge, no heavy vignette
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2,
-        canvas.height / 2,
-        Math.sqrt(canvas.width ** 2 + canvas.height ** 2) * 0.45,
-        canvas.width / 2,
-        canvas.height / 2,
-        Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
-      );
-      gradient.addColorStop(0, 'rgba(10, 15, 26, 0)');
-      gradient.addColorStop(0.7, 'rgba(10, 15, 26, 0)');
-      gradient.addColorStop(1, 'rgba(10, 15, 26, 0.35)');
-
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // No vignette — body bg-surface + aurora gradients already provide atmosphere.
+      // The grid sits transparently on top; content cards carry their own backgrounds.
     };
 
     const updateAnimation = () => {
