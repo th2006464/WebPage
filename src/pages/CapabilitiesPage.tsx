@@ -3,6 +3,7 @@ import { useI18n } from '@/i18n/context';
 import { Shield, BarChart3, Cpu, Briefcase, Scale, Lock } from 'lucide-react';
 import CapabilitiesHero from '@/components/hero/CapabilitiesHero';
 import FeatureCard from '@/components/ui/FeatureCard';
+import ShapeGrid from '@/components/ui/ShapeGrid';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import StrategyPanel from '@/components/sections/StrategyPanel';
 
@@ -20,6 +21,19 @@ export default function CapabilitiesPage() {
   return (
     <>
       <title>{t('pageTitle')}</title>
+
+      {/* Interactive grid background */}
+      <div className="fixed inset-0 z-0" aria-hidden="true">
+        <ShapeGrid
+          shape="square"
+          speed={0.4}
+          squareSize={56}
+          direction="diagonal"
+          borderColor="rgba(158,132,72,0.04)"
+          hoverFillColor="rgba(158,132,72,0.06)"
+          hoverTrailAmount={3}
+        />
+      </div>
 
       <CapabilitiesHero />
 

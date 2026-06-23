@@ -3,6 +3,7 @@ import { useI18n } from '@/i18n/context';
 import { Target, Heart, Gem } from 'lucide-react';
 import AboutHero from '@/components/hero/AboutHero';
 import FeatureCard from '@/components/ui/FeatureCard';
+import ShapeGrid from '@/components/ui/ShapeGrid';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function AboutPage() {
@@ -13,6 +14,19 @@ export default function AboutPage() {
   return (
     <>
       <title>{t('pageTitle')}</title>
+
+      {/* Interactive grid background */}
+      <div className="fixed inset-0 z-0" aria-hidden="true">
+        <ShapeGrid
+          shape="hexagon"
+          speed={0.3}
+          squareSize={64}
+          direction="diagonal"
+          borderColor="rgba(158,132,72,0.05)"
+          hoverFillColor="rgba(158,132,72,0.07)"
+          hoverTrailAmount={4}
+        />
+      </div>
 
       <AboutHero />
 

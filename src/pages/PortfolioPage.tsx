@@ -3,6 +3,7 @@ import { useI18n } from '@/i18n/context';
 import { Building2, Network, Handshake, TrendingUp, Globe, ShieldCheck } from 'lucide-react';
 import PortfolioHero from '@/components/hero/PortfolioHero';
 import FeatureCard from '@/components/ui/FeatureCard';
+import ShapeGrid from '@/components/ui/ShapeGrid';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
 const portfolioAreas = [
@@ -31,6 +32,19 @@ export default function PortfolioPage() {
   return (
     <>
       <title>{t('pageTitle')}</title>
+
+      {/* Interactive grid background */}
+      <div className="fixed inset-0 z-[-1]" aria-hidden="true">
+        <ShapeGrid
+          shape="circle"
+          speed={0.25}
+          squareSize={72}
+          direction="diagonal"
+          borderColor="rgba(158,132,72,0.04)"
+          hoverFillColor="rgba(158,132,72,0.06)"
+          hoverTrailAmount={3}
+        />
+      </div>
 
       <PortfolioHero />
 
